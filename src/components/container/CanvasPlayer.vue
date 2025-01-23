@@ -1,8 +1,13 @@
 <template>
-  <div class="flex-1 overflow-hidden relative" ref="playerContent" @click="cancelSelect">
+  <div
+    ref="playerContent"
+    class="flex-1 overflow-hidden relative"
+    @click="cancelSelect"
+  >
     <span
-      class="pl-2 inline-block w-full h-10 mb-2 leading-10 border-b dark:border-darker border-gray-300">Player</span>
-    <Player :containerSize="containerSize" />
+      class="pl-2 inline-block w-full h-10 mb-2 leading-10 border-b dark:border-darker border-gray-300"
+    >Player</span>
+    <Player :container-size="containerSize" />
   </div>
 </template>
 

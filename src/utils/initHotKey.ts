@@ -4,7 +4,7 @@ export const initHotKey = () => {
     // 注册全局事件
     window.onkeydown = (event: KeyboardEvent) => {
       // 判断按键是否在输入框中
-      let activeElement = document.activeElement;
+      const activeElement = document.activeElement;
       if (activeElement && (['input', 'textarea'].includes(activeElement.tagName.toLowerCase()) || activeElement.isContentEditable)) {
         return;
       }

@@ -1,22 +1,29 @@
 <template>
   <div
+    ref="lineElement"
     class="flex absolute justify-center items-center"
     :class="[
-        disabled ? 'cursor-no-drop' : isVertical ? 'cursor-c-resize' : 'cursor-r-resize',
-        isVertical ? 'w-2 h-full flex-col' : 'h-2 w-full flex-row'
+      disabled ? 'cursor-no-drop' : isVertical ? 'cursor-c-resize' : 'cursor-r-resize',
+      isVertical ? 'w-2 h-full flex-col' : 'h-2 w-full flex-row'
     ]"
-    ref="lineElement"
     @mousedown="mouseDownHandler"
   >
-      <span
-        class="absolute flex z-10 dark:bg-darker bg-gray-50 "
-        :class="isVertical ? 'h-8 w-4 flex-col' : 'w-8 h-4 flex-row'"
+    <span
+      class="absolute flex z-10 dark:bg-darker bg-gray-50 "
+      :class="isVertical ? 'h-8 w-4 flex-col' : 'w-8 h-4 flex-row'"
+    >
+      <el-icon
+        class="flex-auto"
+        :class="isVertical ? 'rotate-90' : ''"
+        :color="iconColor"
       >
-        <el-icon class="flex-auto" :class="isVertical ? 'rotate-90' : ''" :color="iconColor">
-          <MoreFilled />
-        </el-icon>
-      </span>
-    <i class="block dark:bg-darker bg-gray-300" :class="isVertical ? 'dark:w-0.5 w-px h-full' : 'dark:h-0.5 h-px w-full'" />
+        <MoreFilled />
+      </el-icon>
+    </span>
+    <i
+      class="block dark:bg-darker bg-gray-300"
+      :class="isVertical ? 'dark:w-0.5 w-px h-full' : 'dark:h-0.5 h-px w-full'"
+    />
   </div>
 </template>
 

@@ -3,7 +3,11 @@
     <div
       class="float-left h-9 w-32 flex flex-row flex-nowrap items-center justify-around"
     >
-      <div v-for="item of icons" :key="item.title" @click="handlerIcon(item)">
+      <div
+        v-for="item of icons"
+        :key="item.title"
+        @click="handlerIcon(item)"
+      >
         <el-tooltip
           :disabled="item.disable"
           class="bg-gray-400"
@@ -20,9 +24,20 @@
       </div>
     </div>
     <div class="float-right flex w-52 h-9 justify-center items-center">
-      <SubIcon :style="svgStyle" class="cursor-pointer mr-4" @click="changeScale(-10)" />
-      <el-slider v-model="modelValue" v-bind="sliderProps" />
-      <AddIcon :style="svgStyle" class="cursor-pointer ml-4" @click="changeScale(10)" />
+      <SubIcon
+        :style="svgStyle"
+        class="cursor-pointer mr-4"
+        @click="changeScale(-10)"
+      />
+      <el-slider
+        v-model="modelValue"
+        v-bind="sliderProps"
+      />
+      <AddIcon
+        :style="svgStyle"
+        class="cursor-pointer ml-4"
+        @click="changeScale(10)"
+      />
     </div>
   </div>
 </template>

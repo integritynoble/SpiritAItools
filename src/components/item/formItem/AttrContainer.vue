@@ -1,6 +1,14 @@
 <template>
-  <template v-for="(attrItem, attrIndex) in attrData" :key="`${props.trackId}-${attrIndex}`">
-    <component :is="attrItem.component" :index="attrIndex" :componentData="attrItem" v-bind="$attrs" />
+  <template
+    v-for="(attrItem, attrIndex) in attrData"
+    :key="`${props.trackId}-${attrIndex}`"
+  >
+    <component
+      :is="attrItem.component"
+      :index="attrIndex"
+      :component-data="attrItem"
+      v-bind="$attrs"
+    />
   </template>
 </template>
 

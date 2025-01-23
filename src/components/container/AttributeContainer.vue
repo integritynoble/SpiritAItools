@@ -1,13 +1,27 @@
 <template>
-  <div class="select-none relative pl-2" :style="attrWidth">
-    <SplitLine class="top-0 left-0 bottom-0" direction="vertical" :limitSize="limitSize" disabled
-      v-model:newWidth="pageStore.attrWidth" />
-    <div v-show="selectTrackOptionsConfig.length === 0" class="w-full h-full flex flex-col justify-center items-center">
+  <div
+    class="select-none relative pl-2"
+    :style="attrWidth"
+  >
+    <SplitLine
+      v-model:newWidth="pageStore.attrWidth"
+      class="top-0 left-0 bottom-0"
+      direction="vertical"
+      :limit-size="limitSize"
+      disabled
+    />
+    <div
+      v-show="selectTrackOptionsConfig.length === 0"
+      class="w-full h-full flex flex-col justify-center items-center"
+    >
       <AttrEmptyIcon />
       <span class="text-sm">Click the track to edit</span>
     </div>
     <div class="absolute top-0 left-3 right-2 bottom-0 overflow-hidden">
-      <AttrContainer :attrData="selectTrackOptionsConfig" :trackId="trackStore.selectResource?.id" />
+      <AttrContainer
+        :attr-data="selectTrackOptionsConfig"
+        :track-id="trackStore.selectResource?.id"
+      />
     </div>
   </div>
 </template>

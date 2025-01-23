@@ -1,7 +1,9 @@
 <template>
   <div class="p-4 flex-1 overflow-hidden flex flex-col">
-    <div class="bg-zinc-200 h-10 flex items-center justify-center rounded text-sm text-gray-900 cursor-pointer"
-      @click="onUpload">
+    <div
+      class="bg-zinc-200 h-10 flex items-center justify-center rounded text-sm text-gray-900 cursor-pointer"
+      @click="onUpload"
+    >
       <i class="iconfont icon-shangchuan_line mr-2" />
       Local Video
     </div>

@@ -24,13 +24,13 @@ export function formatTime(time: number) {
     };
 }
 export function formatPlayerTime(frameCount: number) {
-    let f = Math.round(frameCount % 30);
+    const f = Math.round(frameCount % 30);
     frameCount = Math.floor(frameCount / 30);
-    let s = frameCount % 60;
+    const s = frameCount % 60;
     frameCount = Math.floor(frameCount / 60);
-    let m = frameCount % 60;
+    const m = frameCount % 60;
     frameCount = Math.floor(frameCount / 60);
-    let h = frameCount;
+    const h = frameCount;
     return `${h < 10 ? '0' : ''}${h}:${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}:${f < 10 ? '0' : ''}${f}`;
 }
 /**
@@ -107,7 +107,7 @@ export function getTextRect({ text = 'Hello World', fontSize = 40, fontFamily }:
 }
 
 export function calcTrackItemAttr(trackItem: Record<string, any>, canvasSize: { width: number, height: number }, trackAttr: Record<string, any> = {}) {
-    const { width: sourceWidth, height: sourceHeight, type, text = '默认文本', fontSize = 40, style } = trackItem;
+    const { width: sourceWidth, height: sourceHeight, type, text = 'Defaulttext', fontSize = 40, style } = trackItem;
     const { width: playerW, height: playerH } = canvasSize;
     let defaultW = playerW;
     let defaultH = playerH;
@@ -151,7 +151,7 @@ export function calcTrackItemAttr(trackItem: Record<string, any>, canvasSize: { 
 }
 
 export function computedItemShowArea(trackItem: Record<string, any>, canvasSize: { width: number, height: number }, trackAttr: Record<string, any>) {
-    let { left = 0, top = 0, scale = 100, text, fontSize } = trackAttr;
+    const { left = 0, top = 0, scale = 100, text, fontSize } = trackAttr;
     const { width, height, type } = trackItem;
     const { width: playerW, height: playerH } = canvasSize;
     let defaultW = playerW;

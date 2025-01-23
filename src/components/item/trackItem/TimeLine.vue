@@ -1,10 +1,13 @@
 <template>
-  <div ref="canvasContainer" class="sticky top-0 left-0 right-0 h-5 text-center leading-5 text-sm z-20">
+  <div
+    ref="canvasContainer"
+    class="sticky top-0 left-0 right-0 h-5 text-center leading-5 text-sm z-20"
+  >
     <canvas
-        :style="canvasStyle"
-        v-bind="canvasAttr"
-        ref="timeLine"
-        @click="handleClick"
+      v-bind="canvasAttr"
+      ref="timeLine"
+      :style="canvasStyle"
+      @click="handleClick"
     />
   </div>
 </template>

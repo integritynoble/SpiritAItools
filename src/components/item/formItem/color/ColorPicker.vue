@@ -1,20 +1,24 @@
 <template>
   <el-popover
-      placement="bottom"
-      :width="220"
-      trigger="click"
+    placement="bottom"
+    :width="220"
+    trigger="click"
   >
     <template #reference>
       <div class="h-8 flex flex-row items-center cursor-pointer">
         <span
-            class="w-6 h-4 block mr-4 border border-gray-500"
-            :style="{ backgroundColor: modelValue }"
+          class="w-6 h-4 block mr-4 border border-gray-500"
+          :style="{ backgroundColor: modelValue }"
         />
         <i class="not-italic">{{ modelValue }}</i>
       </div>
     </template>
     <template #default>
-      <Sketch :model-value="modelValue" @update:model-value="onUpdate" :preset-colors="defaultColors" />
+      <Sketch
+        :model-value="modelValue"
+        :preset-colors="defaultColors"
+        @update:model-value="onUpdate"
+      />
     </template>
   </el-popover>
 </template>

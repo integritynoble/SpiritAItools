@@ -49,7 +49,7 @@ const getGridSize = (scale: number) : number => {
 };
 // 获取当前scale下的单元格像素
 export const getGridPixel = (scale: number, frameCount: number) => {
-    let gridPixel = getGridSize(scale);
+    const gridPixel = getGridSize(scale);
     let trackWidth = gridPixel * frameCount;
     if (scale < 70) { // 1秒一格
         trackWidth = trackWidth / 30;

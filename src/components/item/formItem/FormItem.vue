@@ -1,107 +1,186 @@
 <template>
   <el-tabs
-      v-if="componentData.dataType === 'Tabs'"
-      v-bind="componentData.attr || {}"
-      v-model="activeIndex"
+    v-if="componentData.dataType === 'Tabs'"
+    v-bind="componentData.attr || {}"
+    v-model="activeIndex"
   >
-      <AttrContainer :attrData="componentData.children" />
+    <AttrContainer :attr-data="componentData.children" />
   </el-tabs>
   <el-tab-pane
-      v-else-if="componentData.dataType === 'TabPane'"
-      :label="componentData.name"
-      :name="index"
-      :key="index"
+    v-else-if="componentData.dataType === 'TabPane'"
+    :key="index"
+    :label="componentData.name"
+    :name="index"
   >
-    <AttrContainer :attrData="componentData.children" />
+    <AttrContainer :attr-data="componentData.children" />
   </el-tab-pane>
   <el-collapse
-      v-else-if="componentData.dataType === 'Collapse'"
-      v-model="activeIndex"
+    v-else-if="componentData.dataType === 'Collapse'"
+    v-model="activeIndex"
   >
-    <AttrContainer :attrData="componentData.children" />
+    <AttrContainer :attr-data="componentData.children" />
   </el-collapse>
   <el-collapse-item
-      v-else-if="componentData.dataType === 'CollapsePane'"
-      :title="componentData.name"
-      :name="index"
+    v-else-if="componentData.dataType === 'CollapsePane'"
+    :title="componentData.name"
+    :name="index"
   >
-    <AttrContainer :attrData="componentData.children" />
+    <AttrContainer :attr-data="componentData.children" />
   </el-collapse-item>
   <el-radio
-      v-else-if="componentData.dataType === 'RadioItem'"
-      :label="componentData.value"
-      size="large"
+    v-else-if="componentData.dataType === 'RadioItem'"
+    :label="componentData.value"
+    size="large"
   >
     {{ componentData.name }}
   </el-radio>
   <el-radio-button
-      v-else-if="componentData.dataType === 'RadioButtonItem'"
-      :label="componentData.value"
-      size="small"
+    v-else-if="componentData.dataType === 'RadioButtonItem'"
+    :label="componentData.value"
+    size="small"
   >
     {{ componentData.name }}
   </el-radio-button>
-  <div class="formItem" v-else-if="componentData.dataType === 'Slider'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
+  <div
+    v-else-if="componentData.dataType === 'Slider'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
     <div class="formContent">
-      <el-slider v-model="formValue" v-bind="componentData.attr" />
+      <el-slider
+        v-model="formValue"
+        v-bind="componentData.attr"
+      />
     </div>
     <span class="ml-2 w-12 text-center text-sm leading-8">{{ formValue }}{{ componentData.label }}</span>
   </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'String'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
-    <div class="formContent">
-      <el-input v-model="formValue" type="textarea" v-bind="componentData.attr" />
-    </div>
-  </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'Number'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
-    <div class="formContent">
-      <el-input-number v-model="formValue" v-bind="componentData.attr" />
-    </div>
-  </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'Radio'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
-    <div class="formContent">
-      <el-radio-group v-model="formValue" v-bind="componentData.attr">
-        <AttrContainer :attrData="componentData.children" />
-      </el-radio-group>
-    </div>
-  </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'RadioButton'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
-    <div class="formContent">
-      <el-radio-group v-model="formValue" v-bind="componentData.attr">
-        <AttrContainer :attrData="componentData.children" />
-      </el-radio-group>
-    </div>
-  </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'Boolean'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
-    <div class="formContent">
-      <el-switch v-model="formValue" v-bind="componentData.attr" />
-    </div>
-  </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'TextArea'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
+  <div
+    v-else-if="componentData.dataType === 'String'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
     <div class="formContent">
       <el-input
-          v-model="formValue"
-          v-bind="componentData.attr"
-          type="textarea"
+        v-model="formValue"
+        type="textarea"
+        v-bind="componentData.attr"
       />
     </div>
   </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'Color'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
+  <div
+    v-else-if="componentData.dataType === 'Number'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
     <div class="formContent">
-      <ColorPicker v-model="formValue" v-bind="componentData.attr" />
+      <el-input-number
+        v-model="formValue"
+        v-bind="componentData.attr"
+      />
     </div>
   </div>
-  <div class="formItem" v-else-if="componentData.dataType === 'Flex'">
-    <span class="formTitle" v-show="componentData.name">{{ componentData.name }}</span>
+  <div
+    v-else-if="componentData.dataType === 'Radio'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
+    <div class="formContent">
+      <el-radio-group
+        v-model="formValue"
+        v-bind="componentData.attr"
+      >
+        <AttrContainer :attr-data="componentData.children" />
+      </el-radio-group>
+    </div>
+  </div>
+  <div
+    v-else-if="componentData.dataType === 'RadioButton'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
+    <div class="formContent">
+      <el-radio-group
+        v-model="formValue"
+        v-bind="componentData.attr"
+      >
+        <AttrContainer :attr-data="componentData.children" />
+      </el-radio-group>
+    </div>
+  </div>
+  <div
+    v-else-if="componentData.dataType === 'Boolean'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
+    <div class="formContent">
+      <el-switch
+        v-model="formValue"
+        v-bind="componentData.attr"
+      />
+    </div>
+  </div>
+  <div
+    v-else-if="componentData.dataType === 'TextArea'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
+    <div class="formContent">
+      <el-input
+        v-model="formValue"
+        v-bind="componentData.attr"
+        type="textarea"
+      />
+    </div>
+  </div>
+  <div
+    v-else-if="componentData.dataType === 'Color'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
+    <div class="formContent">
+      <ColorPicker
+        v-model="formValue"
+        v-bind="componentData.attr"
+      />
+    </div>
+  </div>
+  <div
+    v-else-if="componentData.dataType === 'Flex'"
+    class="formItem"
+  >
+    <span
+      v-show="componentData.name"
+      class="formTitle"
+    >{{ componentData.name }}</span>
     <div class="formContentFlex">
-        <AttrContainer :attrData="componentData.children" :style="{ width: `${96 / componentData.attr.col}%` }" />
+      <AttrContainer
+        :attr-data="componentData.children"
+        :style="{ width: `${96 / componentData.attr.col}%` }"
+      />
     </div>
   </div>
 </template>

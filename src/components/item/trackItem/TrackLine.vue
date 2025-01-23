@@ -5,11 +5,14 @@
     :data-index="lineIndex"
     :data-type="lineType"
   >
-    <template v-for="(item, index) of lineData" :key="item.id">
+    <template
+      v-for="(item, index) of lineData"
+      :key="item.id"
+    >
       <TrackItem
-          :lineIndex="lineIndex"
-          :itemIndex="index"
-          :trackItem="item"
+        :line-index="lineIndex"
+        :item-index="index"
+        :track-item="item"
       />
     </template>
   </div>

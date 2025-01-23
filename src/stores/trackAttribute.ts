@@ -31,7 +31,7 @@ export const useTrackAttrState = defineStore('trackAttrState', () => {
         if (!trackAttrMap[trackItem.id]) {
             trackAttrMap[trackItem.id] = {};
             const data = calcTrackItemAttr(trackItem, playerState.canvasOptions, trackAttrMap[trackItem.id]);
-            for (let key in data) {
+            for (const key in data) {
                 trackAttrMap[trackItem.id][key] = data[key];
             }
         }
@@ -41,7 +41,7 @@ export const useTrackAttrState = defineStore('trackAttrState', () => {
         if (!trackAttrMap[id]) {
             trackAttrMap[id] = {};
         }
-        for (let key in data) {
+        for (const key in data) {
             set(trackAttrMap[id], key, data[key]);
         }
         // 在某些属性改动时，重新计算属性
@@ -68,7 +68,7 @@ export const useTrackAttrState = defineStore('trackAttrState', () => {
     const layerAttrMap = computed(() => {
         const { width, height } = playerState.canvasOptions;
         const layerMap: Record<string, LayerAttr> = {};
-        for (let id in trackAttrMap) {
+        for (const id in trackAttrMap) {
             const { centerX, centerY, width: sourceWidth, height: sourceHeight, scale } = trackAttrMap[id];
             const drawWidth = Math.round(sourceWidth * scale / 100);
             const drawHeight = Math.round(sourceHeight * scale / 100);

@@ -4,9 +4,19 @@
       <span class="text-blue-400 mr-1 w-20 inline-block">{{ playTime }}</span>/<span class="ml-2 w-20">{{ allTime }}</span>
     </div>
     <div class="m-auto flex items-center">
-      <ElIcon :size="24" class="cursor-pointer box-content" :class="[disable ? 'cursor-not-allowed' : 'cursor-pointer']">
-        <VideoPause v-show="!store.isPause" @click="pauseVideo" />
-        <VideoPlay v-show="store.isPause" @click="startPlay" />
+      <ElIcon
+        :size="24"
+        class="cursor-pointer box-content"
+        :class="[disable ? 'cursor-not-allowed' : 'cursor-pointer']"
+      >
+        <VideoPause
+          v-show="!store.isPause"
+          @click="pauseVideo"
+        />
+        <VideoPlay
+          v-show="store.isPause"
+          @click="startPlay"
+        />
       </ElIcon>
     </div>
   </div>

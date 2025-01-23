@@ -1,8 +1,15 @@
 <template>
   <ul class="textList">
-    <li v-for="(item, index) in templateList" :key="index" @click="$emit('addText', item)">
+    <li
+      v-for="(item, index) in templateList"
+      :key="index"
+      @click="$emit('addText', item)"
+    >
       <!-- <img :src="item" crossorigin="anonymous" alt=""> -->
-      <span class="text" :style="calcStyle(item)">花字</span>
+      <span
+        class="text"
+        :style="calcStyle(item)"
+      >花字</span>
     </li>
   </ul>
 </template>

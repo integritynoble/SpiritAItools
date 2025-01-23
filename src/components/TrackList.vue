@@ -1,36 +1,71 @@
 <template>
   <div class="trackList flex flex-1 flex-row w-full overflow-x-hidden overflow-y-auto relative">
-    <TrackListIcon :listData="showTrackList" :offsetTop="startY" />
-    <div class="flex-1 overflow-x-scroll overflow-y-auto flex-col shrink-0 grow relative" ref="trackList"
-      @scroll="handleScroll" @wheel="handleWheel" @click="setSelectTract($event, -1, -1)">
-      <TimeLine :start="startX" :scale="trackScale" :step="defaultFps" :focusPosition="store.selectResource"
-        @selectFrame="handlerSelectFrame" />
-      <div class="absolute top-5 flex shrink-0 grow min-w-full" :style="{ 'min-height': 'calc(100% - 20px)' }"
-        ref="trackListContainer" @mousedown="onMouseDown" @mousemove="onMouseMove" @mouseup="onMouseUp"
-        @mouseleave="onMouseUp">
+    <TrackListIcon
+      :list-data="showTrackList"
+      :offset-top="startY"
+    />
+    <div
+      ref="trackList"
+      class="flex-1 overflow-x-scroll overflow-y-auto flex-col shrink-0 grow relative"
+      @scroll="handleScroll"
+      @wheel="handleWheel"
+      @click="setSelectTract($event, -1, -1)"
+    >
+      <TimeLine
+        :start="startX"
+        :scale="trackScale"
+        :step="defaultFps"
+        :focus-position="store.selectResource"
+        @selectFrame="handlerSelectFrame"
+      />
+      <div
+        ref="trackListContainer"
+        class="absolute top-5 flex shrink-0 grow min-w-full"
+        :style="{ 'min-height': 'calc(100% - 20px)' }"
+        @mousedown="onMouseDown"
+        @mousemove="onMouseMove"
+        @mouseup="onMouseUp"
+        @mouseleave="onMouseUp"
+      >
         <template v-if="showTrackList.length === 0">
           <div
-            class="flex justify-center items-center h-24 m-auto w-2/3 dark:bg-gray-500 bg-gray-200  rounded-md text-sm border-dashed border-2 dark:border-gray-500 border-gray-200 hover:dark:border-blue-300 hover:border-blue-400">
+            class="flex justify-center items-center h-24 m-auto w-2/3 dark:bg-gray-500 bg-gray-200  rounded-md text-sm border-dashed border-2 dark:border-gray-500 border-gray-200 hover:dark:border-blue-300 hover:border-blue-400"
+          >
             <VideoIcon class="text-xl mr-4" />
             Drag your materials here to start editing your masterpiece~
           </div>
         </template>
-        <div v-else class="z-10 pt-5 pb-5 min-w-full flex shrink-0 grow flex-col justify-center min-h-full"
-          :style="{ width: `${trackStyle.width}px` }" id="track-container">
-          <template v-for="(lineData, lineIndex) of showTrackList"
-            :key="lineData.list.reduce((r, item) => r + item.id, 'line')">
-            <TrackLine :style="{
-              'margin-left': `${offsetLine.left}px`
-            }" :class="[dropLineIndex === lineIndex ? (insertBefore ? 'showLine-t' : 'showLine-b') : '']"
-              :lineType="lineData.type" :isActive="store.selectTrackItem.line === lineIndex" :lineIndex="lineIndex"
-              :isMain="lineData.main" :lineData="lineData.list" />
+        <div
+          v-else
+          id="track-container"
+          class="z-10 pt-5 pb-5 min-w-full flex shrink-0 grow flex-col justify-center min-h-full"
+          :style="{ width: `${trackStyle.width}px` }"
+        >
+          <template
+            v-for="(lineData, lineIndex) of showTrackList"
+            :key="lineData.list.reduce((r, item) => r + item.id, 'line')"
+          >
+            <TrackLine
+              :style="{
+                'margin-left': `${offsetLine.left}px`
+              }"
+              :class="[dropLineIndex === lineIndex ? (insertBefore ? 'showLine-t' : 'showLine-b') : '']"
+              :line-type="lineData.type"
+              :is-active="store.selectTrackItem.line === lineIndex"
+              :line-index="lineIndex"
+              :is-main="lineData.main"
+              :line-data="lineData.list"
+            />
           </template>
         </div>
         <TrackPlayPoint v-show="showTrackList.length !== 0" />
         <template v-if="showTrackList.length !== 0">
-          <div v-for="line in store.dragData.fixLines.reduce((r, item) => r.concat(item), [])" :key="line"
+          <div
+            v-for="line in store.dragData.fixLines.reduce((r, item) => r.concat(item), [])"
+            :key="line"
             class="z-30 w-px absolute -top-5 bottom-0 bg-yellow-300 dark:bg-yellow-300 pointer-events-none"
-            :style="{ left: `${line.position + 10}px` }" />
+            :style="{ left: `${line.position + 10}px` }"
+          />
         </template>
       </div>
     </div>

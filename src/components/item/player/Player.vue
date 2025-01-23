@@ -1,6 +1,11 @@
 <template>
   <div class="p-2 absolute top-12 bottom-10 left-2 right-2 overflow-hidden">
-    <canvas ref="playerCanvas" class="absolute left-0 right-0 top-0 bottom-0 m-auto bg-gray-900" id="player" :style="{ zoom: scale, width: `${playerWidth}px`, height: `${playerHeight}px` }" />
+    <canvas
+      id="player"
+      ref="playerCanvas"
+      class="absolute left-0 right-0 top-0 bottom-0 m-auto bg-gray-900"
+      :style="{ zoom: scale, width: `${playerWidth}px`, height: `${playerHeight}px` }"
+    />
     <!--
  <div v-show="store.frameCount === 0 || !store.existVideo" class="absolute left-0 right-0 top-0 bottom-0 z-20 flex justify-center items-center">
       <ElIcon :size="144" class="box-content opacity-50" :style="{ color: '#FDE68A' }">

@@ -1,7 +1,9 @@
 <template>
   <div class="p-4 flex-1 overflow-hidden flex flex-col">
-    <div class="bg-zinc-200 h-10 flex items-center justify-center rounded text-sm text-gray-900 cursor-pointer"
-      @click="addTrackItem({ fill: '#fff' })">
+    <div
+      class="bg-zinc-200 h-10 flex items-center justify-center rounded text-sm text-gray-900 cursor-pointer"
+      @click="addTrackItem({ fill: '#fff' })"
+    >
       <i class="iconfont icon-tianjia_line mr-2" />
       Add Text
     </div>
@@ -23,10 +25,10 @@ const trackStore = useTrackState();
 const playStore = usePlayerState();
 function addTrackItem(style: { fill: string, stroke?: string, textBackgroundColor?: string }) {
   trackStore.addTrack(new TextTrack({
-    content: '文本内容',
+    content: 'Text',
     fontSize: 24,
     fontFamily: 'Arial',
-    name: '文本',
+    name: 'Text',
     ...style
   }, playStore.playStartFrame));
 }

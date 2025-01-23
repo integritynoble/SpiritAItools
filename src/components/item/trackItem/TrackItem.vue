@@ -1,19 +1,23 @@
 <template>
   <div
-      class="text-left text-sm top-0 absolute trackItem"
-      :class="[TrackHeightMap.get(props.trackItem.type), isDragState ? 'z-50 isDrag' : 'z-10']"
-      :style="[itemClass]"
-      :data-type="props.trackItem.type"
-      :data-line="lineIndex"
-      :data-index="itemIndex"
-      @click="setSelectTract"
+    class="text-left text-sm top-0 absolute trackItem"
+    :class="[TrackHeightMap.get(props.trackItem.type), isDragState ? 'z-50 isDrag' : 'z-10']"
+    :style="[itemClass]"
+    :data-type="props.trackItem.type"
+    :data-line="lineIndex"
+    :data-index="itemIndex"
+    @click="setSelectTract"
   >
     <!-- 操作手柄 -->
-    <TrackHandler :isActive="isActive" :lineIndex="lineIndex" :itemIndex="itemIndex" />
+    <TrackHandler
+      :is-active="isActive"
+      :line-index="lineIndex"
+      :item-index="itemIndex"
+    />
     <!-- 容器 -->
     <component
-        :is="componentMap.get(trackItem.type)"
-        :trackItem="trackItem"
+      :is="componentMap.get(trackItem.type)"
+      :track-item="trackItem"
     />
   </div>
 </template>

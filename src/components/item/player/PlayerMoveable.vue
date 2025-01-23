@@ -1,31 +1,31 @@
 <template>
   <div
-      ref="moveContainer"
-      class="absolute left-0 right-0 top-0 bottom-0 m-auto"
+    ref="moveContainer"
+    class="absolute left-0 right-0 top-0 bottom-0 m-auto"
   >
     <div
-        v-for="(item, index) in targetList"
-        :key="item.id"
-        :data-eleId="item.id"
-        :data-lineIndex="item.lineIndex"
-        :data-itemIndex="item.itemIndex"
-        :style="{
-          zIndex: index,
-          top: `${item.top}px`,
-          left: `${item.left}px`,
-          width: `${item.w}px`,
-          height: `${item.h}px`,
-          transform: `translate(${item.x}px, ${item.y}px) scale(${item.scale})`
-        }"
-        class="move-target absolute"
-        @click.stop="selectItem(item.id)"
-        @mousedown="mousedown($event, item.id)"
+      v-for="(item, index) in targetList"
+      :key="item.id"
+      :data-eleId="item.id"
+      :data-lineIndex="item.lineIndex"
+      :data-itemIndex="item.itemIndex"
+      :style="{
+        zIndex: index,
+        top: `${item.top}px`,
+        left: `${item.left}px`,
+        width: `${item.w}px`,
+        height: `${item.h}px`,
+        transform: `translate(${item.x}px, ${item.y}px) scale(${item.scale})`
+      }"
+      class="move-target absolute"
+      @click.stop="selectItem(item.id)"
+      @mousedown="mousedown($event, item.id)"
     />
     <Moveable
-        ref="moveable"
-        v-bind="draggableOptions"
-        @drag="onDrag"
-        @scale="onScale"
+      ref="moveable"
+      v-bind="draggableOptions"
+      @drag="onDrag"
+      @scale="onScale"
     />
   </div>
 </template>

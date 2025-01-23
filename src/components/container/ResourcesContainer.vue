@@ -1,9 +1,12 @@
 <template>
   <div class="flex h-full overflow-hidden relative">
-    <MenuList :selected="selected.key" @toggle="onChangeSelect" />
+    <MenuList
+      :selected="selected.key"
+      @toggle="onChangeSelect"
+    />
     <ItemList
-      :activeKey="selected.key"
-      :defaultCollapse="store.hideSubMenu"
+      :active-key="selected.key"
+      :default-collapse="store.hideSubMenu"
       :title="selected.title"
       @collapseChange="changeCollapse"
     />

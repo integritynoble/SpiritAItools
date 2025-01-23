@@ -1,6 +1,15 @@
 <template>
-  <div class="flex h-10 items-stretch" :class="mode">
-    <div v-for="item in items" :key="item.value" class="flex-1 flex items-center justify-center cursor-pointer" :class="{ selected: selected === item.value }" @click="onClick(item)">
+  <div
+    class="flex h-10 items-stretch"
+    :class="mode"
+  >
+    <div
+      v-for="item in items"
+      :key="item.value"
+      class="flex-1 flex items-center justify-center cursor-pointer"
+      :class="{ selected: selected === item.value }"
+      @click="onClick(item)"
+    >
       {{ item.label }}
     </div>
   </div>

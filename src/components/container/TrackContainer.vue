@@ -4,10 +4,10 @@
     :style="trackHeight"
   >
     <SplitLine
+      v-model:newHeight="page.trackHeight"
       class="top-0 left-0 right-0"
       direction="horizontal"
-      :limitSize="limitSize"
-      v-model:newHeight="page.trackHeight"
+      :limit-size="limitSize"
     />
     <TrackContro
       v-model="store.trackScale"
