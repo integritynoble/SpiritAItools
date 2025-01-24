@@ -9,7 +9,7 @@
       <span
         class="text"
         :style="calcStyle(item)"
-      >花字</span>
+      >TEXT</span>
     </li>
   </ul>
 </template>
