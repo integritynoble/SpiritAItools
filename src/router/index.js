@@ -27,10 +27,10 @@ const routes = [
     component: () => import('@/views/AboutView.vue'),
     meta: { requiresAuth: true }, // 需要登录
   },
-  {
-    path: '/:pathMatch(.*)*', // 捕获所有未匹配的路由
-    redirect: '/404', // 重定向到 404 页面
-  },
+  // {
+  //   path: '/:pathMatch(.*)*', // 捕获所有未匹配的路由
+  //   redirect: '/404', // 重定向到 404 页面
+  // },
 ];
 
 const router = createRouter({

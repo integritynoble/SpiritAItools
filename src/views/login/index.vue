@@ -58,9 +58,6 @@ export default {
   },
   methods: {
     handleMessage(event) {
-      // 打印调试信息
-      console.log('收到消息:', event);
-
       // 检查消息来源是否可信
       if (event.origin !== this.LoginUrl) {
         console.warn('消息来源不可信:', event.origin);
@@ -91,6 +88,7 @@ export default {
         console.warn('未收到有效的 AdminToken');
       }
     },
+
     getOtherQuery(query) {
       // 过滤掉 redirect 参数，保留其他参数
       return Object.keys(query).reduce((acc, cur) => {
