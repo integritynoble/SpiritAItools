@@ -337,7 +337,7 @@ handler = (req, res) => {
         ]
       },
       {
-        title: '基础',
+        title: 'Foundation',
         type: 'effect',
         items: [
           {

@@ -5,15 +5,15 @@ export const Options = {
         mappingFormItem('Tabs', {
             children: [
                 mappingFormItem('TabPane', {
-                    name: '属性',
+                    name: 'Property',
                     children: [
                         mappingFormItem('Collapse', {
                             children: [
                                 mappingFormItem('CollapsePane', {
-                                    name: '位置',
+                                    name: 'Location',
                                     children: [
                                         mappingFormItem('Flex', {
-                                            attr: { col: 2 }, name: '位置', children: [
+                                            attr: { col: 2 }, name: 'Location', children: [
                                                 mappingFormItem('Number', {
                                                     attr: {
                                                         controlsPosition: 'right'
@@ -31,7 +31,7 @@ export const Options = {
                                                 min: 1,
                                                 max: 200,
                                                 step: 1
-                                            }, name: '缩放', mappingKey: 'scale', defaultValue: 100, label: '%'
+                                            }, name: 'Scale', mappingKey: 'scale', defaultValue: 100, label: '%'
                                         })
                                     ]
                                 })
@@ -40,7 +40,7 @@ export const Options = {
                     ]
                 }),
                 mappingFormItem('TabPane', {
-                    name: '动画',
+                    name: 'Anime',
                     children: []
                 })
             ]

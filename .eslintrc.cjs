@@ -46,7 +46,8 @@ module.exports = {
     'vue/no-parsing-error': 'error',
     'vue/no-side-effects-in-computed-properties': 'error',
     'vue/component-tags-order': ['error', { order: ['template', 'script', 'style'] }],
-
+    'vue/multi-word-component-names': 'off', // 关闭组件名检查
+    'vue/v-on-event-hyphenation': 'off', // 关闭事件名检查
     // TypeScript 相关规则
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'off',

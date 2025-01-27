@@ -13,3 +13,9 @@
 ## 参考
 - https://github.com/hughfenghen/WebAV 基于 WebCodecs 在浏览器中处理音视频数据；用来处理音视频文件
 - https://github.com/Cc-Edit/CcClip 使用Vue3 + ffmpeg实现的Web剪辑工具，本项目主题功能基于本项目开发
+
+pnpm install
+
+pnpm run dev
+
+pnpm add js-cookie

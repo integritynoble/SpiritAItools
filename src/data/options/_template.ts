@@ -10,19 +10,19 @@ export const Options = {
                         mappingFormItem('TabsCard', {
                             children: [
                                 mappingFormItem('TabPane', {
-                                    name: '基础',
+                                    name: 'Foundation',
                                     children: [
                                         mappingFormItem('Collapse', {
                                             children: [
                                                 mappingFormItem('CollapsePane', {
-                                                    name: '基础',
+                                                    name: 'Foundation',
                                                     children: [
                                                         mappingFormItem('Slider', { attr: {
                                                                 min: 1,
                                                                 max: 100,
                                                                 step: 1
-                                                            }, name: '缩放', mappingKey: 'scale' }),
-                                                        mappingFormItem('Flex', { attr: { col: 2 }, name: '位置', children: [
+                                                            }, name: 'Scale', mappingKey: 'scale' }),
+                                                        mappingFormItem('Flex', { attr: { col: 2 }, name: 'Location', children: [
                                                                 mappingFormItem('Number', { attr: {
                                                                         controlsPosition: 'right'
                                                                     }, name: 'x', mappingKey: 'position.x' }),
@@ -85,7 +85,7 @@ export const Options = {
                     ]
                 }),
                 mappingFormItem('TabPane', {
-                    name: '动画',
+                    name: 'Anime',
                     children: []
                 })
             ]
