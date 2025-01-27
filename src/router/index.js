@@ -4,10 +4,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: () => import('@/views/HomeView.vue'), // 主页面
-    meta: { requiresAuth: true }, // 需要登录
+    path: '/auth-redirect',
+    name: 'auth-redirect',
+    component: () => import('@/views/login/auth-redirect.vue'),
+    meta: { isPublic: true }, // 公开页面，不需要登录
   },
   {
     path: '/login',
@@ -16,16 +16,16 @@ const routes = [
     meta: { isPublic: true }, // 公开页面，不需要登录
   },
   {
+    path: '/',
+    name: 'home',
+    component: () => import('@/views/HomeView.vue'), // 主页面
+    meta: { requiresAuth: true }, // 需要登录
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('@/views/AboutView.vue'),
     meta: { requiresAuth: true }, // 需要登录
-  },
-  {
-    path: '/auth-redirect',
-    name: 'auth-redirect',
-    component: () => import('@/views/login/auth-redirect.vue'),
-    meta: { isPublic: true }, // 公开页面，不需要登录
   },
   {
     path: '/:pathMatch(.*)*', // 捕获所有未匹配的路由
