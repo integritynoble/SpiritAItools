@@ -1,25 +1,50 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+
+/* Layout */
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import('@/views/HomeView.vue'), // 主页面
+    meta: { requiresAuth: true }, // 需要登录
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/index.vue'), // 登录页面
+    meta: { isPublic: true }, // 公开页面，不需要登录
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    component: () => import('@/views/AboutView.vue'),
+    meta: { requiresAuth: true }, // 需要登录
+  },
+  {
+    path: '/auth-redirect',
+    name: 'auth-redirect',
+    component: () => import('@/views/login/auth-redirect.vue'),
+    meta: { isPublic: true }, // 公开页面，不需要登录
+  },
+  {
+    path: '/:pathMatch(.*)*', // 捕获所有未匹配的路由
+    redirect: '/404', // 重定向到 404 页面
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
+  const newRouter = createRouter({
+    history: createWebHistory(process.env.BASE_URL),
+    routes,
+  });
+  router.matcher = newRouter.matcher; // reset router
+}
+
+export default router;
